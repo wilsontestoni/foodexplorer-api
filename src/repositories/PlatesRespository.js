@@ -27,7 +27,7 @@ class PlatesRespository {
     const plates = await knex("plates")
       .join("ingredients", "plates.id", "ingredients.plate_id")
       .leftJoin("favorites", "plates.id", "favorites.plate_id")
-      .select("plates.*", "favorites.id as favorite_id, favorites.user_id")
+      .select("plates.*", "favorites.id as favorite_id, favorites.user_id as favorite_userid")
       .where("plates.name", "like", `%${queryData}%`)
       .orWhere("ingredients.name", "like", `%${queryData}%`)
       .groupBy("plates.id");
