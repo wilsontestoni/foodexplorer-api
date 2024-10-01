@@ -63,9 +63,10 @@ class PlatesServices {
     return plateWithIngredients;
   }
 
-  async index(queryData) {
+  async index(queryData, user_id) {
     const plates = await this.platesRepository.getPlatesBySearchQuery(
-      queryData
+      queryData,
+      user_id
     );
 
     return plates;

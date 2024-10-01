@@ -13,7 +13,7 @@ const platesRoutes = Router();
 
 platesRoutes.use(verifyAutentication)
 
-platesRoutes.get("/", platesController.index);
+platesRoutes.get("/", verifyAutorization(["admin", "customer"]), platesController.index);
 platesRoutes.get("/:id", verifyAutorization(["admin", "customer"]), platesController.show);
 platesRoutes.post("/", verifyAutorization(["admin"]), upload.single("img"), platesController.create);
 platesRoutes.put("/:id", verifyAutorization(["admin"]), upload.single("img"), platesController.update);

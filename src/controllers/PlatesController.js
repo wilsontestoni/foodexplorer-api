@@ -39,8 +39,9 @@ class PlatesController {
 
   async index(req, res) {
     const { queryData } = req.query;
+    const user_id = req.user.id;
 
-    const plates = await platesServices.index(queryData);
+    const plates = await platesServices.index(queryData, user_id);
 
     res.status(200).json(plates);
   }
